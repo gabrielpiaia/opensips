@@ -97,3 +97,33 @@ CREATE TABLE clusterer (
     description VARCHAR(64) DEFAULT NULL,
     UNIQUE KEY clusterer_idx (cluster_id, node_id)
 );
+
+
+CREATE TABLE dialplan (
+    id UNSIGNED INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,  -- Unique ID
+    dpid INT(11) NOT NULL,  -- Dialplan ID
+    pr INT(11) NOT NULL DEFAULT 0,  -- Priority of rule
+    match_op INT(11) NOT NULL,  -- Matching operator for rule (0-equal, 1-regexp)
+    match_exp VARCHAR(64) NOT NULL,  -- Matching expression (regexp or string)
+    match_flags INT(11) NOT NULL DEFAULT 0,  -- Matching flags (0-case sensitive, 1-case insensitive)
+    subst_exp VARCHAR(64) DEFAULT NULL,  -- Substitution expression
+    repl_exp VARCHAR(32) DEFAULT NULL,  -- Replacement expression (sed like)
+    timerec VARCHAR(255) DEFAULT NULL,  -- Time recurrence used to match this rule
+    disabled INT(11) NOT NULL DEFAULT 0,  -- Specifies if the command can be used, or is disabled
+    attrs VARCHAR(255) DEFAULT NULL  -- General attributes string to be returned in case of rule matching
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+CREATE TABLE `dialplan` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `dpid` int(11) NOT NULL,
+  `pr` int(11) NOT NULL DEFAULT '0',
+  `match_op` int(11) NOT NULL,
+  `match_exp` char(64) NOT NULL,
+  `match_flags` int(11) NOT NULL DEFAULT '0',
+  `subst_exp` char(64) DEFAULT NULL,
+  `repl_exp` char(32) DEFAULT NULL,
+  `timerec` char(255) DEFAULT NULL,
+  `disabled` int(11) NOT NULL DEFAULT '0',
+  `attrs` char(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1 

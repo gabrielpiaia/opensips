@@ -20,13 +20,14 @@ VALUES ('dr_groups', 2);
 INSERT INTO version (table_name, table_version)  
 VALUES ('dr_carriers', 3);
 
-####################]
 INSERT INTO version (table_name, table_version)  
 VALUES ('rtpengine', 1);
-8
 
 INSERT INTO version (table_name, table_version)  
 VALUES ('dispatcher', 8);
 
 INSERT INTO version (table_name, table_version)  
 VALUES ('clusterer', 4);
+
+INSERT INTO version (table_name, table_version)  
+VALUES ('dialplan', 5);
