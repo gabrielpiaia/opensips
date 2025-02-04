@@ -71,3 +71,29 @@ CREATE TABLE rtpengine (
     socket TEXT NOT NULL,
     set_id UNSIGNED INT(10) NOT NULL
 );
+
+
+CREATE TABLE dispatcher (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    setid INT NOT NULL,
+    destination VARCHAR(128) NOT NULL,
+    flags INT DEFAULT 0 NOT NULL,
+    priority INT DEFAULT 0 NOT NULL,
+    attrs VARCHAR(128),
+    description VARCHAR(64)
+);
+
+
+CREATE TABLE clusterer (
+    id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    cluster_id INT(10) NOT NULL,
+    node_id INT(10) NOT NULL,
+    url VARCHAR(64) NOT NULL,
+    state INT(1) DEFAULT 1 NOT NULL,
+    no_ping_retries INT(10) DEFAULT 3 NOT NULL,
+    priority INT(10) DEFAULT 50 NOT NULL,
+    sip_addr VARCHAR(64) DEFAULT NULL,
+    flags VARCHAR(64) DEFAULT NULL,
+    description VARCHAR(64) DEFAULT NULL,
+    UNIQUE KEY clusterer_idx (cluster_id, node_id)
+);
