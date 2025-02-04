@@ -1,0 +1,22 @@
+1.1.4. Conceitos de roteamento dinâmico
+O mecanismo de DR usa vários conceitos para definir como o roteamento deve ser feito (descrevendo todas as dependências entre destinos e regras de roteamento).
+
+1.1.4.1. Destino/Gateways
+Essas são as entidades SIP finais para onde o tráfego realmente precisa ser enviado após o roteamento. Elas são armazenadas em uma tabela chamada “ dr_gateways ” . Os endereços de gateway são armazenados em uma tabela separada devido à necessidade de acessá-los independentemente do processamento de Roteamento Dinâmico (por exemplo, adicionar/remover o prefixo PRI do gateway antes/depois de executar outra operação -- receber/retransmitir para o gateway).
+
+Em DR, um gateway é definido por:
+
+identificação (sequência de caracteres)
+
+Endereço SIP (URI SIP)
+
+tipo (inteiro que permite que os GWs sejam agrupados por finalidade, por exemplo, entrada, saída, etc.)
+
+retirar valor (número de dígitos) do número discado
+prefixo (string) a ser adicionado ao número discado
+
+atributos (não usados ​​pelo mecanismo de DR, mas apenas enviados ao nível de script ao rotear para este GW)
+
+modo de sondagem (como o GW deve ser sondado no nível SIP - veja o capítulo de sondagem)
+
+Os Gateways devem ser usados ​​a partir da regra de roteamento ou da definição da operadora. Eles são sempre referenciados por seu ID.

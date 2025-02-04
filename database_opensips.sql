@@ -63,3 +63,11 @@ CREATE TABLE version (
     PRIMARY KEY (table_name),
     UNIQUE KEY t_name_idx (table_name)
 );
+
+
+
+CREATE TABLE rtpengine (
+    id UNSIGNED INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+    socket TEXT NOT NULL,
+    set_id UNSIGNED INT(10) NOT NULL
+);
